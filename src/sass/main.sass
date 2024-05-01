@@ -1,0 +1,90 @@
+@import 'mixin'
+@import 'navbar'
+@import 'hero'
+@import 'about'
+@import 'award'
+@import 'service'
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+.title
+  position: relative
+  font: 700 18px 'proxima-nova'
+  color: #262626
+  letter-spacing: 2.5px
+  text-transform: uppercase
+  @include pad
+    font-size: 28px
+    letter-spacing: 3.64px
+  &::after
+    content: ''
+    position: absolute
+    bottom: 6.5px
+    right: -15px
+    width: 6.5px
+    height: 6.5px
+    border-radius: 50%
+    background-color: #EE6C8A
+    @include pad
+      width: 10px
+      height: 10px
+      bottom: 10px
+      right: -25px
+
+@for $i from 0 through 2
+  .underline-#{$i}
+    position: absolute
+    bottom: -12px
+    left: calc( -20px + 125px * $i)
+    width: 130px
+    height: 9px
+    background: left / contain no-repeat url('../assets/underline-blue.png')
+    @include pad
+      bottom: -16px
+      left: calc( -20px + 179.5px * $i)
+      width: 185px
+      height: 13px
+
+@for $i from 0 through 2
+  .underline-p-#{$i}
+    position: absolute
+    bottom: -12px
+    left: calc( -20px + 125px * $i)
+    width: 130px
+    height: 9px
+    background: left / contain no-repeat url('../assets/underline-purple.png')
+    @include pad
+      bottom: -16px
+      left: calc( -20px + 179.5px * $i)
+      width: 185px
+      height: 13px
+
+.text
+  font: 400 13px 'proxima-nova'
+  color: #262626
+  line-height: 1.5
+  letter-spacing: 1px
+  @include pad
+    font-size: 16px
+    line-height: 1.75
+    letter-spacing: 1px
+
+.block
+  width: 100%
+  height: 280px
+
+.btn
+  font: 700 13px 'proxima-nova' !important
+  color: #fff !important
+  letter-spacing: 2px
+  height: auto !important
+  @include pad
+    font-size: 16px !important
+    letter-spacing: 2.5px
+  .line
+    width: 50px
+    height: 2px
+    background-color: #fff

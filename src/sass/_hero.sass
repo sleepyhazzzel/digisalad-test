@@ -1,0 +1,160 @@
+#hero
+  position: relative
+  height: 110vh
+
+#video-container
+  position: relative
+  height: 100%
+  overflow: hidden
+  border-radius: 0 0 50px 50px
+  &::after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0, 0, 0, 0.3)
+    z-index: 3
+  iframe
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: calc(110vh / 9 * 16)
+    height: 110vh
+    min-width: 100vw
+    min-height: 940px
+    user-select: none
+    pointer-events: none
+    z-index: 1
+
+#overlay
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100vh
+  display: flex
+  flex-wrap: wrap
+  z-index: 5
+
+.left
+  width: 10vw
+  height: 80vh
+  display: none
+  @include desktop
+    display: block
+  .rotate
+    width: 100%
+    height: 100%
+    transform: rotate(-90deg)
+    transform-origin: center
+    display: flex
+    align-items: center
+    .side-text
+      font: 700 16px 'proxima-nova', sans-serif
+      color: #fff
+      letter-spacing: 2.22px
+      text-transform: uppercase
+      white-space: nowrap
+      &::before
+        content: ''
+        position: absolute
+        top: 50%
+        left: -140px
+        transform: translateY(-50%)
+        width: 113px
+        height: 2px
+        background-color: #fff
+
+.center
+  width: 100vw
+  height: 80vh
+  padding: 6vh 0 0 5vw
+  display: flex
+  flex-direction: column
+  justify-content: center
+  @include desktop
+    width: 90vw
+  .logo
+    width: calc( 120px + 5vw )
+    height: auto
+    margin: 0 10px
+  .quote
+    position: relative
+    max-width: 320px
+    margin: 30px 0
+    padding: 0 10px
+    font: 700 30px 'proxima-nova', sans-serif
+    color: #fff
+    letter-spacing: 9.17px
+    line-height: 50px
+    text-transform: uppercase
+    @include pad
+      font-size: 38px
+      line-height: 70px
+      max-width: 610px
+    &::before
+      content: ''
+      position: absolute
+      bottom: 10px
+      left: 0
+      width: 95%
+      height: 8px
+      background: #26C6D0
+      z-index: -1
+      @include pad
+        bottom: 16.5px
+    &::after
+      content: ''
+      position: absolute
+      bottom: 10px
+      right: 0
+      width: 10px
+      height: 10px
+      border-radius: 50%
+      background: #EE6C8A
+      @include pad
+        bottom: 16.5px
+
+.bottom
+  position: relative
+  width: 100vw
+  height: 20vh
+  display: flex
+  justify-content: center
+  align-items: end
+  padding-bottom: 2vh
+  img
+    width: 65px
+    height: 65px
+  &::after
+    content: 'taste us now!'
+    position: absolute
+    bottom: -2vh
+    font: 700 14px 'proxima-nova'
+    color: #fff
+    letter-spacing: 2px
+    text-transform: uppercase
+
+.bottom-line
+  position: relative
+  width: 100vw
+  height: 10vh
+  display: flex
+  justify-content: center
+  align-items: end
+  .line
+    width: 1px
+    height: 44.5px
+    background-color: #fff
+    &::after
+      content: ''
+      position: absolute
+      bottom: -86px
+      left: 50%
+      width: 1px
+      height: 86px
+      background-color: #808080
+      transform: translateX(-50%)
