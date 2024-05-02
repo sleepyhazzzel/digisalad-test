@@ -4,6 +4,9 @@
 @import 'about'
 @import 'award'
 @import 'service'
+@import 'boss'
+@import 'exp'
+@import 'slide'
 
 *
   margin: 0
@@ -47,6 +50,11 @@
       left: calc( -20px + 179.5px * $i)
       width: 185px
       height: 13px
+
+.underline-2
+  left: 158px
+  @include pad
+    left: 262px
 
 @for $i from 0 through 2
   .underline-p-#{$i}

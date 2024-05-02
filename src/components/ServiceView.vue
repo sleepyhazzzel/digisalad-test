@@ -1,7 +1,6 @@
 <template>
-  <div id="service">
+  <section id="service">
     <VContainer>
-      <div class="space" />
       <div class="d-flex justify-center my-16">
         <div class="title" style="color: #fff;">
           our ingradients
@@ -16,67 +15,27 @@
         our services&nbsp;
         <span class="line" />
       </VBtn>
-      <VRow>
+      <VRow class="my-6">
         <VCol v-for="(service, i) in services" :key="i" cols="12" sm="6" md="4">
           <div class="card pa-2">
             <div class="fruit">
-              <VImg :src="service.image" />
+              <VImg :src="`https://github.com/sleepyhazzzel/digisalad-test/blob/main/src/assets/fruit-${i}.png?raw=true`" />
             </div>
-            <h4 class="card-title">{{ service.title }}</h4>
+            <h4 class="card-title">{{ service }}</h4>
             <div class="text" style="color: #fff;">
               Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum bibendum. Duis tincidunt urna non pretium porta. Nam condimentum vitae ligula vel ornare.
             </div>
-            <VBtn variant="outlined" rounded="xl" color="#fff">view more</VBtn>
+            <VBtn variant="outlined" rounded="pill" color="#fff" :text="service === 'branding' ? 'branding' : 'view more'" class="round-btn my-10" />
           </div>
         </VCol>
       </VRow>
+      <div id="quote" class="mb-16">view more digidalad's ingradients</div>
     </VContainer>
-  </div>
+  </section>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 
-for (let i = 0; i < 9; i++) {
-  import(`@/assets/fruit-${i}.png`)
-}
-
-const services = ref([
-  {
-    image: '../assets/fruit-0.png',
-    title: 'ux design'
-  },
-  {
-    image: '../assets/fruit-1.png',
-    title: 'ui design'
-  },
-  {
-    image: '../assets/fruit-2.png',
-    title: 'website development'
-  },
-  {
-    image: '../assets/fruit-3.png',
-    title: 'mobile app development'
-  },
-  {
-    image: '../assets/fruit-4.png',
-    title: 'ecommerce'
-  },
-  {
-    image: '../assets/fruit-5.png',
-    title: 'customer loyalty'
-  },
-  {
-    image: '../assets/fruit-6.png',
-    title: 'digital transformation'
-  },
-  {
-    image: '../assets/fruit-7.png',
-    title: 'digital marketing'
-  },
-  {
-    image: '../assets/fruit-8.png',
-    title: 'branding'
-  }
-])
+const services = ref(['ux design', 'ui design', 'website development', 'mobile app development', 'ecommerce', 'customer loyalty', 'digital transformation', 'digital marketing', 'branding'])
 </script>

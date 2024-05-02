@@ -1,20 +1,40 @@
 #service
   position: relative
-  top: -620px
   background-color: #26C6D0
-  border-radius: 50px
   text-align: center
   z-index: 0
+  &::before
+    content: ''
+    position: absolute
+    top: -600px
+    left: 0
+    width: 100%
+    height: 600px
+    background: #26C6D0
+    border-radius: 50px 50px 0 0
+  &::after
+    content: ''
+    position: absolute
+    bottom: -600px
+    left: 0
+    width: 100%
+    height: 600px
+    background: #26C6D0
+    border-radius: 0 0 50px 50px
   @include pad
-    top: -420px
+    &::before
+      top: -400px
+      height: 400px
+    &::after
+      bottom: -400px
+      height: 400px
   @include desktop
-    top: -250px
-  .space
-    height: 620px
-    @include pad
-      height: 420px
-    @include desktop
-      height: 250px
+    &::before
+      top: -200px
+      height: 200px
+    &::after
+      bottom: -200px
+      height: 200px
 
 .card
   .fruit
@@ -23,7 +43,10 @@
     background-color: #fff
     border-radius: 50%
     padding: 20px
-    margin: 0 auto
+    margin: auto
+    display: flex
+    justify-content: center
+    align-items: center
     img
       height: 100%
   .card-title
@@ -36,3 +59,40 @@
       font-size: 20px
       letter-spacing: 2px
       margin: 15px 0
+  .round-btn
+    width: 140px
+    min-height: 45px
+    font: 700 12px 'proxima-nova' !important
+    letter-spacing: 2px
+    border: 1.5px solid #fff
+    @include pad
+      width: 165px
+      min-height: 58px
+      font: 700 14px 'proxima-nova' !important
+      letter-spacing: 2px
+      border: 2px solid #fff
+
+#quote
+  position: relative
+  width: 100%
+  font: 700 14px 'proxima-nova'
+  letter-spacing: 1px
+  color: #fff
+  text-align: center
+  text-transform: uppercase
+  &::after
+    content: ''
+    position: absolute
+    width: 320px
+    height: 8px
+    background-color: #FFBC58
+    top: 55%
+    left: 50%
+    transform: translateX(-50%)
+    z-index: -1
+  @include pad
+    font: 700 18px 'proxima-nova'
+    letter-spacing: 2px
+    &::after
+      width: 420px
+      height: 10px

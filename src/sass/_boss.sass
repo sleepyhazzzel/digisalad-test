@@ -1,0 +1,60 @@
+#boss
+  position: relative
+  margin: 0 5vw 0 0
+  width: 95%
+  height: auto
+  background: center / cover no-repeat url('../assets/background.jpeg')
+  border-radius: 0 50px 50px 50px
+  z-index: 100
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(88, 88, 128, 0.8)
+    border-radius: 0 50px 50px 50px
+  .boss-img
+    width: 150px
+    height: 150px
+    margin: auto
+    border-radius: 50%
+    background: 60% 20% / 240% no-repeat url('../assets/boss.jpeg')
+    @include pad
+      width: 204px
+      height: 204px
+  .boss-name
+    font: 700 18px 'proxima-nova'
+    color: #fff
+    letter-spacing: 2px
+    text-transform: uppercase
+    @include pad
+      font-size: 20px
+      letter-spacing: 2px
+  .boss-position
+    font: italic 400 16px 'proxima-nova'
+    color: #fff
+    letter-spacing: 2px
+  .comma
+    margin: auto
+    width: 50px
+    height: 50px
+    background: center / contain no-repeat url('../assets/comma.png')
+    @include pad
+      width: 70px
+      height: 70px
+    @include desktop
+      width: 90px
+      height: 90px
+  .quote
+    font: 400 20px 'proxima-nova'
+    color: #fff
+    letter-spacing: 2px
+    @include pad
+      font-size: 22px
+      line-height: 48px
+  .highlight
+    font: 700 22px 'proxima-nova'
+    color: #FFBC58
+    letter-spacing: 2px
