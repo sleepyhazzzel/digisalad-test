@@ -17,7 +17,7 @@
           <div class="slash ma-1" />
           <div class="total">0{{ slides.length }}</div>
         </div>
-        <VRow justify="center" align="center" class="px-16">
+        <VRow justify="center" align="center" class="mt-4 px-16">
           <VCol cols="10" sm="8" md="5" offset="0" style="position: relative;">
             <img :src="slide.image" class="left-img">
             <VBtn v-if="isDesktop" :href="slide.link" target="_blank" class="btn btn-desktop px-8 py-12" color="#26C6D0" rounded="0" size="x-large" flat>
@@ -58,7 +58,7 @@ const { smAndUp, mdAndUp } = useDisplay()
 const isPad = computed(() => smAndUp.value)
 const isDesktop = computed(() => mdAndUp.value)
 
-const modules = [Navigation]
+const modules = [Autoplay, Navigation]
 
 const slides = [
   {
