@@ -47,7 +47,7 @@
                         <div class="card-subtitle" :style="`color: ${card.subtitleColor}`">{{ card.subtitle }}</div>
                         <span class="card-title" :style="`color: ${card.titleColor}`">
                           {{ card.title }}
-                          <div class="dot" />
+                          <div class="dot" :style="`background: ${card.dotColor}`" />
                         </span>
                       </VCol>
                     </VRow>
@@ -70,7 +70,7 @@
                 <div class="card-subtitle" :style="`color: ${card.subtitleColor}`">{{ card.subtitle }}</div>
                 <span class="card-title" :style="`color: ${card.titleColor}`">
                   {{ card.title }}
-                  <div class="dot" />
+                  <div class="dot" :style="`background: ${card.dotColor}`" />
                 </span>
               </VImg>
             </VCard>
@@ -87,6 +87,8 @@
 <script setup>
 import { ref, computed, onMounted, nextTick } from 'vue'
 import { useDisplay } from 'vuetify'
+import gsap from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
 import sideMenuBg from '../assets/side-menu-bg.png'
 import saladLogo from '../assets/salad-logo.png'
 import leaf from '../assets/fruit-0.png'
@@ -138,6 +140,7 @@ const cards = ref([
     image: `${bgWorks}`,
     icon: `${tomato}`,
     color: 'rgba(238, 108, 138, 0.8)',
+    dotColor: '#26C6D0',
     height: 320,
     anchor: 'slide'
   },
@@ -207,6 +210,7 @@ const components = ref([
         iconCols: 3,
         textCols: 9,
         color: 'rgba(238, 108, 138, 0.8)',
+        dotColor: '#26C6D0',
         height: 320,
         anchor: 'slide'
       }
@@ -275,14 +279,27 @@ const components = ref([
   }
 ])
 
+// const scrollToAnchor = (anchor) => {
+//   dialog.value = false
+//   const el = document.getElementById(anchor)
+//   if (el) {
+//     nextTick(() => {
+//       el.scrollIntoView({ behavior: 'smooth' })
+//     })
+//   }
+// }
+
+gsap.registerPlugin(ScrollToPlugin)
+
 const scrollToAnchor = (anchor) => {
   dialog.value = false
-  const el = document.getElementById(anchor)
-  if (el) {
-    nextTick(() => {
-      el.scrollIntoView({ behavior: 'smooth' })
+  nextTick(() => {
+    gsap.to(window, {
+      duration: 2, // 滚动动画的持续时间（以秒为单位）
+      scrollTo: `#${anchor}`,
+      ease: 'power1.inOut'
     })
-  }
+  })
 }
 </script>
 

@@ -14,7 +14,7 @@
         <h1 class="quote">We create<br>amazing<br>digital experiences</h1>
       </div>
       <div class="bottom">
-        <img src="../assets/salad.png" alt="salad">
+        <img id="salad" src="../assets/salad.png" alt="salad" @click="$emit('scroll-to-about')">
       </div>
       <div class="bottom-line">
         <div class="line" />
@@ -24,5 +24,18 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+import gsap from 'gsap'
 
+defineEmits(['scroll-to-about'])
+
+onMounted(() => {
+  gsap.to('#salad', {
+    y: '-=15',
+    repeat: -1,
+    yoyo: true,
+    ease: 'power1.inOut',
+    duration: 1
+  })
+})
 </script>

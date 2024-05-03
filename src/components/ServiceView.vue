@@ -19,9 +19,9 @@
         <VCol v-for="(service, i) in services" :key="i" cols="12" sm="6" md="4">
           <div class="card pa-2">
             <div class="fruit">
-              <VImg :src="`https://github.com/sleepyhazzzel/digisalad-test/blob/main/src/assets/fruit-${i}.png?raw=true`" />
+              <VImg :src="service.image" />
             </div>
-            <h4 class="card-title">{{ service }}</h4>
+            <h4 class="card-title">{{ service.name }}</h4>
             <div class="text" style="color: #fff;">
               Cras quis nulla commodo, aliquam lectus sed, blandit augue. Cras ullamcorper bibendum bibendum. Duis tincidunt urna non pretium porta. Nam condimentum vitae ligula vel ornare.
             </div>
@@ -35,7 +35,68 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import { useDisplay } from 'vuetify'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import fruit0 from '../assets/fruit-0.png'
+import fruit1 from '../assets/fruit-1.png'
+import fruit2 from '../assets/fruit-2.png'
+import fruit3 from '../assets/fruit-3.png'
+import fruit4 from '../assets/fruit-4.png'
+import fruit5 from '../assets/fruit-5.png'
+import fruit6 from '../assets/fruit-6.png'
+import fruit7 from '../assets/fruit-7.png'
+import fruit8 from '../assets/fruit-8.png'
 
-const services = ref(['ux design', 'ui design', 'website development', 'mobile app development', 'ecommerce', 'customer loyalty', 'digital transformation', 'digital marketing', 'branding'])
+const services = ref([
+  { name: 'ux design', image: fruit0 },
+  { name: 'ui design', image: fruit1 },
+  { name: 'website development', image: fruit2 },
+  { name: 'mobile app development', image: fruit3 },
+  { name: 'ecommerce', image: fruit4 },
+  { name: 'customer loyalty', image: fruit5 },
+  { name: 'digital transformation', image: fruit6 },
+  { name: 'digital marketing', image: fruit7 },
+  { name: 'branding', image: fruit8 }
+])
+
+const { smAndUp, lgAndUp } = useDisplay()
+const isPad = computed(() => smAndUp.value)
+const isDesktop = computed(() => lgAndUp.value)
+
+gsap.registerPlugin(ScrollTrigger)
+
+onMounted(() => {
+  const cards = Array.from(document.querySelectorAll('.card'))
+  let size = ''
+  if (isDesktop.value) {
+    size = 3
+  } else if (isPad.value) {
+    size = 2
+  } else {
+    size = 1
+  }
+  const groups = chunk(cards, size)
+
+  groups.forEach((group, i) => {
+    gsap.fromTo(group,
+      { y: 100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        ease: 'power1.out',
+        scrollTrigger: {
+          trigger: group[0]
+        },
+        delay: i * 0.2 // 每組之間的動畫延遲時間（以秒為單位）
+      }
+    )
+  })
+})
+function chunk (arr, size) {
+  return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+    arr.slice(i * size, i * size + size)
+  )
+}
 </script>
