@@ -117,13 +117,11 @@ const onScroll = () => {
     isScrolling.value = false
   }
 }
-
 onMounted(() => {
   window.addEventListener('scroll', onScroll)
 })
 
 const dialog = ref(false)
-
 const cards = ref([
   {
     title: 'About Us',
@@ -279,23 +277,12 @@ const components = ref([
   }
 ])
 
-// const scrollToAnchor = (anchor) => {
-//   dialog.value = false
-//   const el = document.getElementById(anchor)
-//   if (el) {
-//     nextTick(() => {
-//       el.scrollIntoView({ behavior: 'smooth' })
-//     })
-//   }
-// }
-
 gsap.registerPlugin(ScrollToPlugin)
-
 const scrollToAnchor = (anchor) => {
   dialog.value = false
   nextTick(() => {
     gsap.to(window, {
-      duration: 2, // 滚动动画的持续时间（以秒为单位）
+      duration: 2,
       scrollTo: `#${anchor}`,
       ease: 'power1.inOut'
     })
